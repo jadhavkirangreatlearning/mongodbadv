@@ -51,6 +51,11 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.findAll().stream().filter(emp -> emp.getEmpContactNumber() == empContactNumber).toList().get(0));
     }
 
+    @GetMapping("/findbyuid/{empUID}")
+    public ResponseEntity<Employee> findByUID(@PathVariable long empUID) {
+        return ResponseEntity.ok(employeeService.findAll().stream().filter(emp -> emp.getEmpUID() == empUID).toList().get(0));
+    }
+
     @GetMapping("/finbyempemailid/{empEmailId}")
     public ResponseEntity<Employee> findByEmailId(@PathVariable String empEmailId) {
         return ResponseEntity.ok(employeeService.findAll().stream().filter(emp -> emp.getEmpEmailId().equals(empEmailId)).toList().get(0));
